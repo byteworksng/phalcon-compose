@@ -6,7 +6,7 @@
 # https://help.github.com/articles/ignoring-files/#create-a-global-gitignore
 
 # Phalcon Developer Tools
-application/.phalcon/migration-version
+projects/*
 
 composer.lock
 variables.env

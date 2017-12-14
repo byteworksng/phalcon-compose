@@ -4,7 +4,8 @@ services:
   mysql:
     image: mysql:5.6
     volumes:
-      - ./mysql:/etc/mysql
+      - ./data/mysql:/docker-entrypoint-initdb.d
+      - ./conf/mysql:/etc/mysql
       - mysql:/var/lib/mysql
     env_file:
         - variables.env
@@ -14,6 +15,9 @@ services:
         condition: on-failure
     networks:
       - phalcon-compose
+    dns: &internal-dns
+      - 172.16.1.150
+      - 114.114.114.114
 
   memcached:
     image: memcached:1.4-alpine
@@ -23,50 +27,54 @@ services:
         condition: on-failure  
     networks:
       - phalcon-compose
+    dns: *internal-dns
 
   redis:
     image: redis:3.2-alpine
     volumes:
+      - ./conf/redis/redis.conf:/etc/redis.conf
       - redis:/data
+    command: redis-server /etc/redis.conf
     deploy:
       replicas: 1
       restart_policy:
         condition: on-failure
     networks:
       - phalcon-compose
+    dns: *internal-dns
 
-  nginx-server:
-    image: nginx
+  shopnc:
+    build: docker/shopnc
+    image: magichuihui/shopnc:v1.0
+    working_dir: /projects
     volumes:
-        - ./nginx:/etc/nginx
-        - app-data:/app
-    restart: on-failure
-    ports:
-        - 8083:80
-    networks:
-        - phalcon-compose
-
-  phpfpm:
-    image: suhelen/phalcon-fpm
-    working_dir: /app
-    volumes:
-      - ./cache:/app/cache
-      - ./logs:/app/logs
-      - app-data:/app
+        - ./projects:/projects
     depends_on:
       - mysql
-      - nginx-server
     env_file:
       - variables.env
     networks:
       - phalcon-compose
+    dns: *internal-dns
+
+  nginx-server:
+    image: openresty/openresty:1.13.6.1-centos
+    volumes:
+      - ./projects:/projects
+      - ./conf/openresty:/usr/local/openresty/nginx/conf
+    restart: on-failure
+    depends_on:
+      - shopnc
+    ports:
+        - 80:80
+    networks:
+        - phalcon-compose
+    dns: *internal-dns
 
 volumes:
   mysql:
     driver: local
   redis:
-    driver: local
-  app-data:
     driver: local
 
 networks:
