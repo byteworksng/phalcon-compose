@@ -2,16 +2,14 @@
 
 # Phalcon Compose
 
-[![Version 2.3.0](https://img.shields.io/badge/version-v2.3.0-green.svg)][:release:]
 [![Build Status](https://travis-ci.org/phalcon/phalcon-compose.svg?branch=master)][:status:]
 [![Phalcon v3.1.2](https://img.shields.io/badge/phalcon-3.1.2-blue.svg)][:phalcon:]
 [![Downloads](https://img.shields.io/packagist/dt/phalcon/compose.svg)][:downloads:]
 
-The official Phalcon Docker Edition
+The unofficial Phalcon Docker Environment
 
-This is an official, open-source and community-driven boilerplate for Phalcon projects that run on [Docker][:docker:].
-It's an attempt of standardizing and making it easier to bootstrap Phalcon applications ready for development and
-production environments.
+This is an unofficial, open-source and community-driven boilerplate for Phalcon projects that run on [Docker][:docker:] which based on [Phalcon Compose][:release:].
+It's an attempt of standardizing and making it easier to bootstrap Phalcon applications ready for development and production environments.
 
 ## Documentation
 
