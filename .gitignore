@@ -8,7 +8,6 @@
 # Phalcon Developer Tools
 projects/*
 !projects/index.html
-!projects/invo/*
 
 composer.lock
 variables.env
