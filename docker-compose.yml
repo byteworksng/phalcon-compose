@@ -48,7 +48,9 @@ services:
     image: magichuihui/shopnc:v1.0
     working_dir: /projects
     volumes:
-        - ./projects:/projects
+      - ./conf/php56/php.ini:/usr/local/etc/php/php.ini
+      - ./conf/php56/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ./projects:/projects
     depends_on:
       - mysql
     env_file:
