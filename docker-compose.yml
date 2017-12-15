@@ -61,7 +61,7 @@ services:
     image: openresty/openresty:1.13.6.1-centos
     volumes:
       - ./projects:/projects
-      - ./conf/openresty:/usr/local/openresty/nginx/conf
+      - ./conf/nginx:/usr/local/openresty/nginx/conf
     restart: on-failure
     depends_on:
       - shopnc
