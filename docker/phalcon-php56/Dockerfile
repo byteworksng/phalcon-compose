@@ -16,10 +16,10 @@ RUN apt-get update && apt-get install -y \
     # Add php.ini
     && docker-php-source extract \
     && cp /usr/src/php/php.ini-production /usr/local/etc/php/php.ini \
+    && rm -rf /usr/src/php \
     # Install php-memcached
     && pecl install memcached-2.2.0 \
     && docker-php-ext-enable memcached \
-    && cd .. && rm -rf php-memcached \
     # Install redis
     && pecl install redis \
     && docker-php-ext-enable redis \
