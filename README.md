@@ -12,7 +12,7 @@ It's an attempt of standardizing and making it easier to bootstrap Phalcon appli
 
 ## Documentation
 
-Phalcon compose's documentation can be seen at [phalcon-compose.readme.io][:compose:].
+Phalcon Compose's documentation can be seen at [phalcon-compose.readme.io][:compose:].
 
 ## License
 
