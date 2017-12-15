@@ -4,7 +4,6 @@
 
 [![Build Status](https://travis-ci.org/phalcon/phalcon-compose.svg?branch=master)][:status:]
 [![Phalcon v3.1.2](https://img.shields.io/badge/phalcon-3.1.2-blue.svg)][:phalcon:]
-[![Downloads](https://img.shields.io/packagist/dt/phalcon/compose.svg)][:downloads:]
 
 The unofficial Phalcon Docker Environment
 
